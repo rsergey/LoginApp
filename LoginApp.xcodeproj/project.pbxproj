@@ -14,6 +14,8 @@
 		A5930E86269E0BA600EF5CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5930E85269E0BA600EF5CCB /* Assets.xcassets */; };
 		A5930E89269E0BA600EF5CCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5930E87269E0BA600EF5CCB /* LaunchScreen.storyboard */; };
 		A5930E95269E154300EF5CCB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5930E94269E154300EF5CCB /* WelcomeViewController.swift */; };
+		A5D9243826A473B600D80F4A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9243726A473B600D80F4A /* AboutViewController.swift */; };
+		A5D9243F26A4746800D80F4A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9243E26A4746800D80F4A /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		A5930E88269E0BA600EF5CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5930E8A269E0BA600EF5CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5930E94269E154300EF5CCB /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		A5D9243726A473B600D80F4A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		A5D9243E26A4746800D80F4A /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			children = (
 				A5930E80269E0BA500EF5CCB /* LoginViewController.swift */,
 				A5930E94269E154300EF5CCB /* WelcomeViewController.swift */,
+				A5D9243726A473B600D80F4A /* AboutViewController.swift */,
+				A5D9243E26A4746800D80F4A /* DetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -183,7 +189,9 @@
 				A5930E81269E0BA500EF5CCB /* LoginViewController.swift in Sources */,
 				A5930E95269E154300EF5CCB /* WelcomeViewController.swift in Sources */,
 				A5930E7D269E0BA500EF5CCB /* AppDelegate.swift in Sources */,
+				A5D9243826A473B600D80F4A /* AboutViewController.swift in Sources */,
 				A5930E7F269E0BA500EF5CCB /* SceneDelegate.swift in Sources */,
+				A5D9243F26A4746800D80F4A /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

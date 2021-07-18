@@ -29,8 +29,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.userName = userNameTF.text
+        let tabBarController = segue.destination as! UITabBarController
+        guard let viewControllers = tabBarController.viewControllers else { return }
+        for viewController in viewControllers {
+            if let welcomeVC = viewController as? WelcomeViewController {
+                welcomeVC.userName = userNameTF.text
+            } else if let navigationVC = viewController as? UINavigationController {
+                guard let aboutVC = navigationVC.topViewController as? AboutViewController else { return }
+                aboutVC.title = userName
+                aboutVC.user = userName
+            }
+        }
     }
     
     // MARK: - IB Actions
