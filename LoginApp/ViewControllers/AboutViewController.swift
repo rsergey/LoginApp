@@ -8,25 +8,53 @@
 import UIKit
 
 class AboutViewController: UIViewController {
+    // MARK: - IB Outlets
+    @IBOutlet weak var personPhotoButton: UIButton!
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var secondNameLabel: UILabel!
+    @IBOutlet weak var dateOfBirthLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
     
-    @IBOutlet weak var userName: UILabel!
+    // MARK: - Public Properties
+    var photoFileName = ""
+    var firstName = ""
+    var secondName = ""
+    var dateOfBirth: DateComponents = DateComponents()
+    var location = ""
+    var email = ""
+    var gender: Gender = .unknown
     
-    var user = ""
-
+    // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        userName.text = user
+        personPhotoButton.clipsToBounds = true
+        personPhotoButton.layer.cornerRadius = 50
+        personPhotoButton.setImage(UIImage(named: photoFileName), for: .normal)
+        
+        firstNameLabel.text = firstName
+        secondNameLabel.text = secondName
+        locationLabel.text = location
+        emailLabel.text = email
+        genderLabel.text = gender.rawValue
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let createCalendar = Calendar(identifier: .gregorian)
+        guard let date = createCalendar.date(from: dateOfBirth) else { return }
+        dateOfBirthLabel.text = dateFormatter.string(from: date)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailsVC = segue.destination as? DetailsViewController else { return }
+        detailsVC.photoFileName = photoFileName
+    }
+
+    // MARK: - IB Actions
+    @IBAction func personPhotoButtonTapped() {
+        performSegue(withIdentifier: "detailsScreenSegue", sender: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

@@ -13,8 +13,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTF: UITextField!
     
     // MARK: - Private Properties
-    private let userName = "Sergey"
-    private let password = "qwerty"
+    private let user = User.getUser()
     
     // MARK: - Override Methods
     override func viewDidLoad() {
@@ -33,18 +32,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard let viewControllers = tabBarController.viewControllers else { return }
         for viewController in viewControllers {
             if let welcomeVC = viewController as? WelcomeViewController {
-                welcomeVC.userName = userNameTF.text
+                welcomeVC.userName = user.userName
             } else if let navigationVC = viewController as? UINavigationController {
                 guard let aboutVC = navigationVC.topViewController as? AboutViewController else { return }
-                aboutVC.title = userName
-                aboutVC.user = userName
+                aboutVC.title = user.person.firstName + " " + user.person.secondName
+                aboutVC.photoFileName = user.person.photoFileName
+                aboutVC.gender = user.person.gender
+                aboutVC.firstName = user.person.firstName
+                aboutVC.secondName = user.person.secondName
+                aboutVC.dateOfBirth = user.person.dateOfBirth
+                aboutVC.location = user.person.placeOfLiving
+                aboutVC.email = user.email
             }
         }
     }
     
     // MARK: - IB Actions
     @IBAction func logInButtonTapped() {
-        if userNameTF.text == userName && passwordTF.text == password {
+        if userNameTF.text == user.userName && passwordTF.text == user.password {
             performSegue(withIdentifier: "welcomeScreenSegue", sender: nil)
         } else {
             showAlert(title: "Oops!",
@@ -56,11 +61,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func showHelp(_ sender: UIButton) {
         if sender.tag == 0 {
             showAlert(title: "No problem!",
-                      message: "Your user name: " + userName,
+                      message: "Your user name: " + user.userName,
                       incorrectTextFields: userNameTF)
         } else if sender.tag == 1 {
             showAlert(title: "Hmm...",
-                      message: "Your password: " + password,
+                      message: "Your password: " + user.password,
                       incorrectTextFields: passwordTF)
         }
     }
